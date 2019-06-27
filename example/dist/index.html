@@ -1,0 +1,71 @@
+<style>
+  overlay-modal {
+    --overlay-background: rgba(0,10,10,.3);
+  }
+  overlay-modal > div {
+    width: 400px;
+    height: 200px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 4px #ddd;
+  }
+  .container > div {
+    position: relative;
+    overflow: hidden;
+    height: 40vh;
+  }
+  /* prevent slot element diplay before modal defined */
+  slot-modal:not(:defined) *[slot] {
+    display: none;
+  }
+</style>
+
+<!-- ================= Function mode ================= -->
+
+<div class="container">
+  <h2>
+    Function mode
+    <button id="confirmButton">click to show confirm modal</button>
+  </h2>
+
+  <div id="confirm"></div>
+</div>
+
+<!-- ================= Function mode with template content ================= -->
+
+<div class="container">
+  <h2>
+    Function mode with template content
+    <button id="tempButton">click to show alert modal</button>
+  </h2>
+
+  <div id="template"></div>
+
+  <template id="content">
+    <h3>This is a Modal create by template mode</h3>
+    <p>
+      This is a Modal create by template mode. This is a Modal create by template mode. This is a Modal create by template mode
+    </p>
+  </template>
+</div>
+
+<!-- ================= Shadow slot ================= -->
+
+<div class="container">
+  <h2>
+    Shadow slot
+    <button id="slotButton">click to show confirm modal</button>
+  </h2>
+
+  <div id="slot">
+    <slot-modal>
+      <h3 slot="content">This is a Modal create by slot mode</h3>
+      <p slot="content">
+        This is a Modal create by template mode. This is a Modal create by template mode. This is a Modal create by template mode
+      </p>
+      <div slot="footer">
+        <button onclick="onComfirmClick()">confirm</button>
+        <button onclick="onCancelClick()">cancel</button>
+      </div>
+    </slot-modal>
+  </div>
+</div><script type="text/javascript" src="modal.js"></script>
